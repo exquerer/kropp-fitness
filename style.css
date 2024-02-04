@@ -207,6 +207,13 @@
   background-color: var(--color-dark);
  }
 
+ p {
+  margin-block: 0;
+ }
+ p:not([class]):not(:last-child) {
+  margin-bottom: 24px;
+ }
+
   /* Ссылки */
  a {
   color: var(--color-light);
@@ -230,6 +237,13 @@
  h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   text-transform: uppercase;
+ }
+
+ /* Предустановка для среднего текста */
+ .title-medium {
+  font-size: clamp(20px, 2.08vw, 40px);
+  line-height: 1.3;
+  color: var(--color-light);
  }
 
 
@@ -292,6 +306,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
   height: 38px;
   padding-inline: 7px 26px 7px 26px;
   width: 123px;
@@ -358,6 +373,8 @@
 
  /* Main */
 
+
+
  /* section Banner */
  .banner {
   display: flex;
@@ -386,6 +403,7 @@
   width: clamp(60px, 10.1vw, 194px);
   aspect-ratio: 1;
   margin-right: 30px;
+  margin-left: 42px;
   background: url(./icons/Vector.svg) center/contain no-repeat;
  }
 
@@ -431,16 +449,104 @@
 
 
 
-
-
   /* section Motivation */
-  
+  .motivation-item:nth-child(even) {
+    background-color: var(--color-dark-alternate);
+  }
 
+  .motivation-item:nth-child(even) .motivation-card{
+    flex-direction: row-reverse;
+  }
 
+  .motivation-card {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    column-gap: clamp(30px, 10.42vw, 200px);
+  }
+
+  .motivation-card-img {
+    margin-block: -60px;
+  }
+
+  .motivation-card-body {
+    margin-left: 35px;
+  }
+
+  /* Элементы сзади текста */
+  .backdrop-title {
+    position: relative;
+    z-index: 2;
+  }
+  .backdrop-title::before {
+    content: '';
+    display: block;
+    position: absolute;
+    right: calc(100% + 8px);
+    width: 26px;
+    aspect-ratio: 1;
+    background: url(./icons/X.svg) center/contain no-repeat;
+  }
+  .backdrop-title::after {
+    position: absolute;
+    z-index: -1;
+    top: -0.42em;
+    left: -0.6em;
+    font-family: var(--font-family-accent);
+    content: attr(data-title);
+    font-size: 2.8em;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--color-dark-gray);
+  }
+
+  .motivation-card-title:not(:last-child) {
+    margin-bottom: 14px;
+  }
+
+  .motivation-card-description {
+    max-width: 400px;
+  }
+
+  .motivation-card-description:not(:last-child) {
+    margin-bottom: 37px;
+  }
+
+  .button.transparent {
+    position: relative;
+    height: var(--input-height);
+    background-color: transparent;
+    border: var(--border);
+    padding: 15px 81px 14px 31px;
+    width: 192px;
+  }
+  .button.transparent::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    height: 100%;
+    aspect-ratio: 1;
+    background: url(./icons/arrow.svg) center/100% no-repeat;
+    width: 54px;
+    height: 54px;
+  }
+  .button.transparent:hover {
+    color: var(--color-light);
+    box-shadow: 0 1px 1px 0  var(--color-light-gray), 0 2px 5px 0  var(--color-light-gray);
+  }
 
   /* Медиазапросы для адаптива */
-
-  @media (max-width: 1024px) {
+   @media (max-width: 1919px) {
+    .motivation-card-img {
+      margin-block: -20px;
+    }
+   }
+   @media (max-width: 1080px) {
+    .motivation-card-img {
+      max-width: 30%;
+      height: auto;
+    }
+   }
+   @media (max-width: 1024px) {
     .header {
       flex-wrap: wrap;
       padding-top: 20px;
@@ -461,6 +567,15 @@
     }
     .banner {
       row-gap: 10px;
+    }
+
+    .motivation-card{
+      padding-block: 50px;
+    }
+    .motivation-card-img {
+      max-width: 30%;
+      height: auto;
+      margin-block: 0;
     }
    }
    @media (max-width: 767px) {
@@ -486,6 +601,21 @@
     }
     .banner-info::before {
       margin-right: 10px;
+    }
+
+    .motivation-card, 
+    .motivation-item:nth-child(even) .motivation-card {
+      flex-direction: column-reverse;
+    }
+    .motivation-card {
+      padding-block: 30px;
+      row-gap: 30px;
+    }
+    .motivation-card-img {
+      max-width: 60%;
+    }
+    .motivation-card-description:not(:last-child) {
+      margin-bottom: 20px;
     }
    }
    @media (max-width: 430px) {
