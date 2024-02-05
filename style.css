@@ -237,13 +237,13 @@
  h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   text-transform: uppercase;
+  color: var(--color-light);
  }
 
  /* Предустановка для среднего текста */
  .title-medium {
   font-size: clamp(20px, 2.08vw, 40px);
   line-height: 1.3;
-  color: var(--color-light);
  }
 
 
@@ -534,11 +534,51 @@
     box-shadow: 0 1px 1px 0  var(--color-light-gray), 0 2px 5px 0  var(--color-light-gray);
   }
 
+
+
+  /* section Training-types */
+  .training-types {
+    position: relative;
+    background-color: var(--color-dark);
+    max-width: 1920px;
+    margin-inline: auto;
+    padding-bottom: 120px;
+    padding-top: 70px;
+  }
+  .training-types-list {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 60px;
+  }
+  .training-types-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 32px;
+    background: url(./icons/gray-arrow.svg) 100% 0/80px no-repeat;
+    padding-top: 80px;
+  }
+  .training-types-item-title {
+    font-size: 16px;
+    }
+
+
+
   /* Медиазапросы для адаптива */
    @media (max-width: 1919px) {
     .motivation-card-img {
       margin-block: -20px;
     }
+   }
+   @media (max-width: 1280px) {
+    .training-types-list {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .training-types {
+      padding-bottom: 80px;
+      padding-top: 60px;
+      }
    }
    @media (max-width: 1080px) {
     .motivation-card-img {
@@ -616,6 +656,23 @@
     }
     .motivation-card-description:not(:last-child) {
       margin-bottom: 20px;
+    }
+
+    .training-types {
+    padding-bottom: 50px;
+    padding-top: 30px;
+    }
+    .training-types-list {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .training-types-item {
+      background: url(./icons/gray-arrow.svg) 100% 0/50px no-repeat;
+      padding-top: 50px;
+      row-gap: 10px;
+    }
+    .training-types-img {
+      max-width: 120px;
     }
    }
    @media (max-width: 430px) {
